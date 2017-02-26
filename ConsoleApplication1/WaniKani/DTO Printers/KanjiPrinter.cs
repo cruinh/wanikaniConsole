@@ -35,20 +35,19 @@ namespace WaniKani
         {
             foreach (var kanji in kanjis)
             {
-                Console.Write("\t");
                 KanjiPrinter.print(kanji);
             }
         }
 
         public static void print(Kanji kanji)
         {
-            Console.Write("{0}\n", kanji.character);
-            Console.Write("\t\tmeaning : \"{0}\"\n", kanji.meaning);
-            Console.Write("\t\tonyomi : \"{0}\"\n", kanji.onyomi);
-            Console.Write("\t\tkunyomi : \"{0}\"\n", kanji.kunyomi);
-            Console.Write("\t\timportant_reading : \"{0}\"\n", kanji.important_reading);
-            Console.Write("\t\tlevel : {0}\n", kanji.level);
-            Console.Write("\t\tnanori : \"{0}\"\n", kanji.nanori);
+            Console.Write(" {0}\n", kanji.character);
+            Console.Write("   meaning : \"{0}\"\n", kanji.meaning);
+            Console.Write("   onyomi : \"{0}\"\n", kanji.onyomi);
+            Console.Write("   kunyomi : \"{0}\"\n", kanji.kunyomi);
+            Console.Write("   important_reading : \"{0}\"\n", kanji.important_reading);
+            Console.Write("   level : {0}\n", kanji.level);
+            Console.Write("   nanori : \"{0}\"\n", kanji.nanori);
             Console.Write("\n");
         }
     }

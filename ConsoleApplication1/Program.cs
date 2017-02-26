@@ -37,7 +37,7 @@ namespace WaniKani {
         private static void printIntro()
         {
             Console.WriteLine("Welcome to WaniKani API Test!\n....\n");
-            Console.WriteLine("\tNOTE: If you haven't yet, set your console to output using fonts MS Gothic or MS Mincho.\n");
+            Console.WriteLine("NOTE: If you haven't yet, set your console to output using fonts MS Gothic or MS Mincho.\n");
         }
 
         private static void printOutro()
