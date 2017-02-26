@@ -24,6 +24,7 @@ namespace WaniKani
             Console.Write("   important_reading : \"{0}\"\n", kanji.important_reading);
             Console.Write("   level : {0}\n", kanji.level);
             Console.Write("   nanori : \"{0}\"\n", kanji.nanori);
+            ItemUserInfoPrinter.print(kanji.user_specific);
             Console.Write("\n");
         }
     }

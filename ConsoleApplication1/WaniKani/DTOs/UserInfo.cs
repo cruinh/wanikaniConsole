@@ -17,37 +17,17 @@ namespace WaniKani
         public string twitter { get; set; }
         public int topics_count { get; set; }
         public int posts_count{ get; set; }
-        public Nullable<UInt64> creation_date { get; set; }
-        public Nullable<UInt64> vacation_date { get; set; }
+        public double? creation_date { get; set; }
+        public double? vacation_date { get; set; }
 
-        public Nullable<DateTime> creation_date_native
+        public DateTime? creation_date_native
         {
-            get
-            {
-                if (creation_date.HasValue)
-                {
-                    return DateConverter.UnixTimeStampToDateTime(creation_date.Value);
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            get {  return DateConverter.UnixTimeStampToDateTime(creation_date);  }
         }
 
-        public Nullable<DateTime> vacation_date_native
+        public DateTime? vacation_date_native
         {
-            get
-            {
-                if (vacation_date.HasValue)
-                {
-                    return DateConverter.UnixTimeStampToDateTime(vacation_date.Value);
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            get { return DateConverter.UnixTimeStampToDateTime(vacation_date); }
         }
     }
 }

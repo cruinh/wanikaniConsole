@@ -22,6 +22,7 @@ namespace WaniKani
             Console.Write("   meaning : \"{0}\"\n", radical.meaning);
             Console.Write("   onyomi : \"{0}\"\n", radical.image);
             Console.Write("   kunyomi : \"{0}\"\n", radical.level);
+            ItemUserInfoPrinter.print(radical.user_specific);
             Console.Write("\n");
         }
     }

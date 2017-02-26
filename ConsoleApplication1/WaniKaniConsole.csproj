@@ -69,6 +69,7 @@
     <Compile Include="WaniKani\DateConverter.cs" />
     <Compile Include="WaniKani\DTOs\ItemUserInfo.cs" />
     <Compile Include="WaniKani\DTOs\Kanji.cs" />
+    <Compile Include="WaniKani\Printers\ItemUserInfoPrinter.cs" />
     <Compile Include="WaniKani\Printers\KanjiResponsePrinter.cs" />
     <Compile Include="WaniKani\Printers\RadicalsPrinter.cs" />
     <Compile Include="WaniKani\Printers\RadicalsResponsePrinter.cs" />
