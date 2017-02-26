@@ -18,14 +18,14 @@ namespace WaniKani
         public Boolean burned;
         public UInt64 burned_date;
         public UInt64 reactivated_date;
-        public int meaning_correct;
-        public int meaning_incorrect;
-        public int meaning_max_streak;
-        public int meaning_current_streak;
-        public int reading_correct;
-        public int reading_incorrect;
-        public int reading_max_streak;
-        public int reading_current_streak;
+        public Nullable<int> meaning_correct;
+        public Nullable<int> meaning_incorrect;
+        public Nullable<int> meaning_max_streak;
+        public Nullable<int> meaning_current_streak;
+        public Nullable<int> reading_correct;
+        public Nullable<int> reading_incorrect;
+        public Nullable<int> reading_max_streak;
+        public Nullable<int> reading_current_streak;
 
         public DateTime unlocked_date_native {
             get { return DateConverter.UnixTimeStampToDateTime(unlocked_date); }

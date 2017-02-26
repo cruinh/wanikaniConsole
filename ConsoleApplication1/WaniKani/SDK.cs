@@ -18,18 +18,37 @@ namespace WaniKani
             this.apiKey = apiKey;
         }
 
-        public void requestKanji(Action<KanjiResponse> resposneHandler)
+        public void requestRadicals(Action<WaniKaniResponse> responseHandler)
         {
-            string resource = "kanji";
+            string apiResource = "radicals";
             string argument = "";
 
-            blockingRequestData(resource, argument, resposneHandler);
+            string requestURI = this.requestURI(apiResource, argument);
+            HttpClient client = SDK.client;
+
+            Console.WriteLine("Sending Request for " + apiResource + " " + argument);
+            HttpResponseMessage httpResponse = client.GetAsync(requestURI).Result;  // Blocking call!
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                // Parse the response body. Blocking!
+                var radicalsResponse = httpResponse.Content.ReadAsAsync<RadicalsResponse>().Result;
+                radicalsResponse.httpResponse = httpResponse;
+
+                responseHandler(radicalsResponse);
+            }
+            else
+            {
+                RadicalsResponse radicalsResponse = new RadicalsResponse();
+                radicalsResponse.httpResponse = httpResponse;
+                responseHandler(radicalsResponse);
+            }
         }
 
-
-
-        private void blockingRequestData(string apiResource, string argument, Action<KanjiResponse> responseHandler)
+        public void requestKanji(Action<WaniKaniResponse> responseHandler)
         {
+            string apiResource = "kanji";
+            string argument = "";
+
             string requestURI = this.requestURI(apiResource, argument);
             HttpClient client = SDK.client;
 

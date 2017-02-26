@@ -69,14 +69,19 @@
     <Compile Include="WaniKani\DateConverter.cs" />
     <Compile Include="WaniKani\DTOs\ItemUserInfo.cs" />
     <Compile Include="WaniKani\DTOs\Kanji.cs" />
+    <Compile Include="WaniKani\Printers\KanjiResponsePrinter.cs" />
+    <Compile Include="WaniKani\Printers\RadicalsPrinter.cs" />
+    <Compile Include="WaniKani\Printers\RadicalsResponsePrinter.cs" />
     <Compile Include="WaniKani\Responses\KanjiResponse.cs" />
-    <Compile Include="WaniKani\DTOs\Radicals.cs" />
+    <Compile Include="WaniKani\DTOs\Radical.cs" />
+    <Compile Include="WaniKani\Responses\RadicalsResponse.cs" />
+    <Compile Include="WaniKani\Responses\WaniKaniResponse.cs" />
     <Compile Include="WaniKani\SDK.cs" />
-    <Compile Include="WaniKani\DTO Printers\KanjiPrinter.cs" />
+    <Compile Include="WaniKani\Printers\KanjiPrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaniKani\DTOs\UserInfo.cs" />
-    <Compile Include="WaniKani\DTO Printers\UserInfoPrinter.cs" />
+    <Compile Include="WaniKani\Printers\UserInfoPrinter.cs" />
     <Compile Include="WaniKani\DTOs\Vocabulary.cs" />
   </ItemGroup>
   <ItemGroup>
