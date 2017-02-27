@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WaniKani
 {
-    public class RadicalsResponse : IWaniKaniResponse
+    public class UserInfoResponse : IWaniKaniResponse
     {
         public HttpResponseMessage httpResponse { get; set; }
         public Boolean success()
         {
-            if (user_information != null && requested_information != null)
+            if (user_information != null)
             {
                 return true;
             }
@@ -23,6 +23,5 @@ namespace WaniKani
         }
 
         public UserInfo user_information { get; set; }
-        public IEnumerable<Radical> requested_information { get; set; }
     }
 }

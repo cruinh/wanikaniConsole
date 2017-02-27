@@ -71,7 +71,7 @@ namespace WaniKani {
             Console.ReadKey();
         }
 
-        private static void responseHandler(WaniKaniResponse waniKaniResponse)
+        private static void responseHandler(IWaniKaniResponse waniKaniResponse)
         {
             if (waniKaniResponse is KanjiResponse)
             {

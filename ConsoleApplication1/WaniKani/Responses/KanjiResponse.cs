@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace WaniKani
 {
-    public class KanjiResponse : WaniKaniResponse
+    public class KanjiResponse : IWaniKaniResponse
     {
         public HttpResponseMessage httpResponse { get; set; }
         public Boolean success()

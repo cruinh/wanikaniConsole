@@ -18,56 +18,41 @@ namespace WaniKani
             this.apiKey = apiKey;
         }
 
-        public void requestRadicals(Action<WaniKaniResponse> responseHandler)
+        public void requestData<T>(string apiResource, string argument, Action<T> responseHandler) where T : IWaniKaniResponse, new()
+        {
+            string requestURI = this.requestURI(apiResource, argument);
+            HttpClient client = SDK.client;
+
+            Console.WriteLine("Sending Request for " + apiResource + " " + argument);
+            HttpResponseMessage httpResponse = client.GetAsync(requestURI).Result;
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                var wanikaniResponse = httpResponse.Content.ReadAsAsync<T>().Result;
+                wanikaniResponse.httpResponse = httpResponse;
+                responseHandler(wanikaniResponse);
+            }
+            else
+            {
+                T wanikaniResponse = new T();
+                wanikaniResponse.httpResponse = httpResponse;
+                responseHandler(wanikaniResponse);
+            }
+        }
+
+        public void requestRadicals(Action<RadicalsResponse> responseHandler)
         {
             string apiResource = "radicals";
             string argument = "";
 
-            string requestURI = this.requestURI(apiResource, argument);
-            HttpClient client = SDK.client;
-
-            Console.WriteLine("Sending Request for " + apiResource + " " + argument);
-            HttpResponseMessage httpResponse = client.GetAsync(requestURI).Result;  // Blocking call!
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                // Parse the response body. Blocking!
-                var radicalsResponse = httpResponse.Content.ReadAsAsync<RadicalsResponse>().Result;
-                radicalsResponse.httpResponse = httpResponse;
-
-                responseHandler(radicalsResponse);
-            }
-            else
-            {
-                RadicalsResponse radicalsResponse = new RadicalsResponse();
-                radicalsResponse.httpResponse = httpResponse;
-                responseHandler(radicalsResponse);
-            }
+            requestData<RadicalsResponse>(apiResource, argument, responseHandler);
         }
 
-        public void requestKanji(Action<WaniKaniResponse> responseHandler)
+        public void requestKanji(Action<KanjiResponse> responseHandler)
         {
             string apiResource = "kanji";
             string argument = "";
 
-            string requestURI = this.requestURI(apiResource, argument);
-            HttpClient client = SDK.client;
-
-            Console.WriteLine("Sending Request for " + apiResource + " " + argument);
-            HttpResponseMessage httpResponse = client.GetAsync(requestURI).Result;  // Blocking call!
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                // Parse the response body. Blocking!
-                var kanjiResponse = httpResponse.Content.ReadAsAsync<KanjiResponse>().Result;
-                kanjiResponse.httpResponse = httpResponse;
-
-                responseHandler(kanjiResponse);
-            }
-            else
-            {
-                KanjiResponse kanjiResponse = new KanjiResponse();
-                kanjiResponse.httpResponse = httpResponse;
-                responseHandler(kanjiResponse);
-            }
+            requestData<KanjiResponse>(apiResource, argument, responseHandler);
         }
 
         private string requestURI(string apiResource, string argument)

@@ -76,6 +76,7 @@
     <Compile Include="WaniKani\Responses\KanjiResponse.cs" />
     <Compile Include="WaniKani\DTOs\Radical.cs" />
     <Compile Include="WaniKani\Responses\RadicalsResponse.cs" />
+    <Compile Include="WaniKani\Responses\UserInfoResponse.cs" />
     <Compile Include="WaniKani\Responses\WaniKaniResponse.cs" />
     <Compile Include="WaniKani\SDK.cs" />
     <Compile Include="WaniKani\Printers\KanjiPrinter.cs" />
