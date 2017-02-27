@@ -48,26 +48,45 @@ namespace WaniKani
         private static void showMenu()
         {
             Console.WriteLine("Choose from the following API requests:");
+            Console.WriteLine("   0: User Profile");
             Console.WriteLine("   1: Radicals List");
             Console.WriteLine("   2: Kanji List");
             Console.WriteLine("\nAny other key to exit");
-            Console.Write("\n> ");
 
             parseMenuInput();
         }
 
         private static void parseMenuInput()
         {
+            Console.Write("\n> ");
             var key = Console.ReadKey().Key;
-            Console.WriteLine("");
+            Console.WriteLine("\n");
 
-            if (key == ConsoleKey.NumPad1 || key == ConsoleKey.D1)
+            if (key == ConsoleKey.NumPad0 || key == ConsoleKey.D0)
+            {
+                if (userInfo != null)
+                {
+                    userInfoDialog = new UserInfoDialog(userInfo);
+                    userInfoDialog.show();
+                }
+                else
+                {
+                    Console.WriteLine("[--ERROR--]: No user information to display");
+                }
+                showMenu();
+                parseMenuInput();
+            }
+            else if (key == ConsoleKey.NumPad1 || key == ConsoleKey.D1)
             {
                 sdk.requestUnlockedRadicals(responseHandler);
+                showMenu();
+                parseMenuInput();
             }
             else if (key == ConsoleKey.NumPad2 || key == ConsoleKey.D2)
             {
                 sdk.requestUnlockedKanji(responseHandler);
+                showMenu();
+                parseMenuInput();
             }
             else
             {
@@ -86,11 +105,6 @@ namespace WaniKani
             if (waniKaniResponse is UserInfoResponse)
             {
                 userInfo = waniKaniResponse.user_information;
-                if (userInfo != null)
-                {
-                    userInfoDialog = new UserInfoDialog(userInfo);
-                    userInfoDialog.show();
-                }
                 UserInfoReponsePrinter.print((UserInfoResponse)waniKaniResponse);
             }
             else if (waniKaniResponse is KanjiResponse)
