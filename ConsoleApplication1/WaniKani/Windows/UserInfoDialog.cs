@@ -53,86 +53,68 @@ namespace WaniKani
                     componentX += gravatarImage.Size.Width + 4;
                 }
 
-                Label usernameLabel = new Label();
-                usernameLabel.Size = new Size(200, 15);
-                usernameLabel.Text = "User: " + userInfo.username;
-                usernameLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(usernameLabel);
+                string username = "User: " + userInfo.username;
+                addLabel(componentX, componentY, username);
 
-                componentY += usernameLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label levelLabel = new Label();
-                levelLabel.Size = new Size(200, 15);
-                levelLabel.Text = "Level: " + userInfo.level;
-                levelLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(levelLabel);
+                string level = "Level: " + userInfo.level;
+                addLabel(componentX, componentY, level);
 
-                componentY += levelLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label titleLabel = new Label();
-                titleLabel.Size = new Size(200, 15);
-                titleLabel.Text = "Title: " + userInfo.title;
-                titleLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(titleLabel);
+                string title = "Title: " + userInfo.title;
+                addLabel(componentX, componentY, title);
 
-                componentY += titleLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label aboutLabel = new Label();
-                aboutLabel.Size = new Size(200, 15);
-                aboutLabel.Text = "About: " + userInfo.about;
-                aboutLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(aboutLabel);
+                string about = "About: " + userInfo.about;
+                addLabel(componentX, componentY, about);
 
-                componentY += aboutLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label websiteLabel = new Label();
-                websiteLabel.Size = new Size(200, 15);
-                websiteLabel.Text = "Website: " + userInfo.website;
-                websiteLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(websiteLabel);
+                string website = "Website: " + userInfo.website;
+                addLabel(componentX, componentY, website);
 
-                componentY += websiteLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label twitterLabel = new Label();
-                twitterLabel.Size = new Size(200, 15);
-                twitterLabel.Text = "Twitter: " + userInfo.twitter;
-                twitterLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(twitterLabel);
+                string twitter = "Twitter: " + userInfo.twitter;
+                addLabel(componentX, componentY, twitter);
 
-                componentY += twitterLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label topicsLabel = new Label();
-                topicsLabel.Size = new Size(200, 15);
-                topicsLabel.Text = "Topics: " + userInfo.topics_count;
-                topicsLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(topicsLabel);
+                string topics = "Topics: " + userInfo.topics_count;
+                addLabel(componentX, componentY, topics);
 
-                componentY += topicsLabel.Size.Height;
+                componentY += labelHeight;
+                
+                string posts = "Posts: " + userInfo.posts_count;
+                addLabel(componentX, componentY, posts);
 
-                Label postsLabel = new Label();
-                postsLabel.Size = new Size(200, 15);
-                postsLabel.Text = "Posts: " + userInfo.posts_count;
-                postsLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(postsLabel);
+                componentY += labelHeight;
+                
+                string creation = "Creation Date: " + userInfo.creation_date_native;
+                addLabel(componentX, componentY, creation);
 
-                componentY += postsLabel.Size.Height;
+                componentY += labelHeight;
 
-                Label creationLabel = new Label();
-                creationLabel.Size = new Size(200, 15);
-                creationLabel.Text = "Creation Date: " + userInfo.creation_date_native;
-                creationLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(creationLabel);
-
-                componentY += creationLabel.Size.Height;
-
-                Label vacationLabel = new Label();
-                vacationLabel.Size = new Size(200, 15);
-                vacationLabel.Text = "Vacation: " + userInfo.vacation_date_native.ToString().TrimStart();
-                vacationLabel.Location = new Point(componentX, componentY);
-                this.Controls.Add(vacationLabel);
+                string vacation = "Vacation: " + userInfo.vacation_date_native.ToString().TrimStart();
+                addLabel(componentX, componentY, vacation);
 
                 //componentY += vacationLabel.Size.Height;
             }
+        }
+
+        private const int labelWidth = 200;
+        private const int labelHeight = 15;
+
+        private void addLabel(int x, int y, string text)
+        {
+            Label label = new Label();
+            label.Size = new Size(labelWidth, labelHeight);
+            label.Text = text;
+            label.Location = new Point(x, y);
+            this.Controls.Add(label);
         }
 
         private static Bitmap gravatar(string userHash)
