@@ -39,7 +39,15 @@ namespace WaniKani
             }
         }
 
-        public void requestRadicals(Action<RadicalsResponse> responseHandler)
+        public void requestUserInformation(Action<UserInfoResponse> responseHandler)
+        {
+            string apiResource = "user-information";
+            string argument = "";
+
+            requestData<UserInfoResponse>(apiResource, argument, responseHandler);
+        }
+
+        public void requestUnlockedRadicals(Action<RadicalsResponse> responseHandler)
         {
             string apiResource = "radicals";
             string argument = "";
@@ -47,7 +55,7 @@ namespace WaniKani
             requestData<RadicalsResponse>(apiResource, argument, responseHandler);
         }
 
-        public void requestKanji(Action<KanjiResponse> responseHandler)
+        public void requestUnlockedKanji(Action<KanjiResponse> responseHandler)
         {
             string apiResource = "kanji";
             string argument = "";

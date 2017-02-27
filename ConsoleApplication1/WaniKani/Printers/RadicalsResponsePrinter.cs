@@ -17,7 +17,7 @@ namespace WaniKani
 
         public static void print(RadicalsResponse radicalsResponse)
         {
-            if (radicalsResponse.user_information != null && radicalsResponse.requested_information != null)
+            if (radicalsResponse.success())
             {
                 UserInfoPrinter.print(radicalsResponse.user_information);
                 RadicalsPrinter.print(radicalsResponse.requested_information);

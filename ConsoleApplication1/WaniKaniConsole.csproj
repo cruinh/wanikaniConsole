@@ -54,10 +54,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +75,7 @@
     <Compile Include="WaniKani\Printers\KanjiResponsePrinter.cs" />
     <Compile Include="WaniKani\Printers\RadicalsPrinter.cs" />
     <Compile Include="WaniKani\Printers\RadicalsResponsePrinter.cs" />
+    <Compile Include="WaniKani\Printers\UserInfoReponsePrinter.cs" />
     <Compile Include="WaniKani\Responses\KanjiResponse.cs" />
     <Compile Include="WaniKani\DTOs\Radical.cs" />
     <Compile Include="WaniKani\Responses\RadicalsResponse.cs" />
@@ -85,6 +88,9 @@
     <Compile Include="WaniKani\DTOs\UserInfo.cs" />
     <Compile Include="WaniKani\Printers\UserInfoPrinter.cs" />
     <Compile Include="WaniKani\DTOs\Vocabulary.cs" />
+    <Compile Include="WaniKani\Windows\UserInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Drawing;
 
-namespace WaniKani {
-
+namespace WaniKani
+{
     public class WaniKaniConsole
     {
         private static SDK sdk;
+        private static UserInfo userInfo;
+        private static UserInfoDialog userInfoDialog;
 
         private static string apiKeyPath()
         {
@@ -45,6 +50,7 @@ namespace WaniKani {
             Console.WriteLine("Choose from the following API requests:");
             Console.WriteLine("   1: Radicals List");
             Console.WriteLine("   2: Kanji List");
+            Console.WriteLine("\nAny other key to exit");
             Console.Write("\n> ");
 
             parseMenuInput();
@@ -57,11 +63,15 @@ namespace WaniKani {
 
             if (key == ConsoleKey.NumPad1 || key == ConsoleKey.D1)
             {
-                sdk.requestRadicals(responseHandler);
+                sdk.requestUnlockedRadicals(responseHandler);
             }
             else if (key == ConsoleKey.NumPad2 || key == ConsoleKey.D2)
             {
-                sdk.requestKanji(responseHandler);
+                sdk.requestUnlockedKanji(responseHandler);
+            }
+            else
+            {
+                Environment.Exit(0);
             }
         }
 
@@ -73,7 +83,17 @@ namespace WaniKani {
 
         private static void responseHandler(IWaniKaniResponse waniKaniResponse)
         {
-            if (waniKaniResponse is KanjiResponse)
+            if (waniKaniResponse is UserInfoResponse)
+            {
+                userInfo = waniKaniResponse.user_information;
+                if (userInfo != null)
+                {
+                    userInfoDialog = new UserInfoDialog(userInfo);
+                    userInfoDialog.show();
+                }
+                UserInfoReponsePrinter.print((UserInfoResponse)waniKaniResponse);
+            }
+            else if (waniKaniResponse is KanjiResponse)
             {
                 KanjiResponsePrinter.print((KanjiResponse)waniKaniResponse);
             }
@@ -88,6 +108,9 @@ namespace WaniKani {
             setup();
 
             printIntro();
+
+            sdk.requestUserInformation(responseHandler);
+
             showMenu();
             printOutro();
         }

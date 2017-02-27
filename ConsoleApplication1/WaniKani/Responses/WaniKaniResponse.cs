@@ -11,5 +11,6 @@ namespace WaniKani
     {
         HttpResponseMessage httpResponse { get; set; }
         Boolean success();
+        UserInfo user_information { get; set; }
     }
 }
