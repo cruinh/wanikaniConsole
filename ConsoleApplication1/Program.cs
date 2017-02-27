@@ -73,31 +73,19 @@ namespace WaniKani
                 {
                     Console.WriteLine("[--ERROR--]: No user information to display");
                 }
-                showMenu();
-                parseMenuInput();
             }
             else if (key == ConsoleKey.NumPad1 || key == ConsoleKey.D1)
             {
                 sdk.requestUnlockedRadicals(responseHandler);
-                showMenu();
-                parseMenuInput();
             }
             else if (key == ConsoleKey.NumPad2 || key == ConsoleKey.D2)
             {
                 sdk.requestUnlockedKanji(responseHandler);
-                showMenu();
-                parseMenuInput();
             }
             else
             {
                 Environment.Exit(0);
             }
-        }
-
-        private static void printOutro()
-        {
-            Console.WriteLine("\nPress the Any key to quit.");
-            Console.ReadKey();
         }
 
         private static void responseHandler(IWaniKaniResponse waniKaniResponse)
@@ -125,8 +113,10 @@ namespace WaniKani
 
             sdk.requestUserInformation(responseHandler);
 
-            showMenu();
-            printOutro();
+            while (true)
+            {
+                showMenu();
+            }
         }
     }
 }
